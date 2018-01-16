@@ -16,7 +16,6 @@
 
         <table>
           <form method="POST" action="/hello">
-            {{ csrf_field() }}
 
             @if ($errors->has('name'))
               <tr>

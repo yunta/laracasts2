@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
+            // ↑　この1文を削除するとフォームのCSRF対策がOFFになる
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
