@@ -5,7 +5,6 @@
 @section('menubar')
   @parent
   インデックスページ<br>
-  あああ
 @endsection
 
 @section('content')
@@ -19,7 +18,7 @@
           <tr>
             <td>{{$item->name}}</td>
             <td>{{$item->mail}}</td>
-            <td>{{$item->age}}</td>
+            <td>{{$item->Field4}}</td>
           </tr>
         @endforeach
   </table>

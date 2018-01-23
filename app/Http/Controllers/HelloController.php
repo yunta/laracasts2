@@ -13,7 +13,7 @@ class HelloController extends Controller
 {
       public function index(Request $request)
       {
-        $items = DB::select('select * from people');
+        $items = DB::table('people')->orderBy('Field4', 'desc')->get();
         return view('hello.index',['items' => $items]);
       }
 
@@ -29,16 +29,65 @@ class HelloController extends Controller
         return $response;
       }
 
+      public function add(Request $request)
+      {
+        return view('hello.add');
+      }
+
+      public function create(Request $request)
+      {
+        $param = [
+          'name' => $request->name,
+          'mail' => $request->mail,
+          'Field4' => $request->Field4
+        ];
+        DB::table('people')->insert($param);
+        return redirect('/hello');
+      }
+
+      public function edit(Request $request)
+      {
+        $item = DB::table('people')
+            ->where('id', $request->id)->first();
+        return view('hello.edit', ['form' => $item]);
+      }
+
       public function update(Request $request)
       {
         $param = [
-          'id' => $request->id,
           'name' => $request->name,
           'mail' => $request->mail,
-          'age' => $request->age,
+          'Field4' => $request->age,
         ];
-        DB::update('update people set name =:name, mail = :mail,age = :age where id = :id', $param);
+        DB::table('people')
+            ->where('id', $request->id)
+            ->update($param);
         return redirect('/hello');
+      }
+
+      public function show(Request $request)
+      {
+        $name = $request->name;
+        $item = DB::table('people')
+            ->where('name', 'like', '%' . $name . '%')
+            ->orWhere('mail', 'like', '%' . $name . '%')
+            ->get();
+        return view('hello.show', ['items' => $item]);
+      }
+
+      public function del(Request $request)
+      {
+        $item = DB::table('people')
+            ->where('id', $request->id)->first();
+        return view('hello.del', ['form' => $item]);
+      }
+
+      public function remove(Request $request)
+      {
+        DB::table('people')
+            ->where('id', $request->id)->delete();
+        return redirect('/hello');
+
       }
 
 }
