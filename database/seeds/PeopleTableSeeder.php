@@ -14,28 +14,28 @@ class PeopleTableSeeder extends Seeder
         $param = [
           'name' => 'yun',
           'mail' => 'yun@yun.jp',
-          'age' => 24,
+          'Field4' => 24,
         ];
         DB::table('people')->insert($param);
 
         $param = [
           'name' => 'miu',
           'mail' => 'miu@miu.jp',
-          'age' => 28,
+          'Field4' => 28,
         ];
         DB::table('people')->insert($param);
 
         $param = [
           'name' => 'jun',
           'mail' => 'jun@jun.jp',
-          'age' => 57,
+          'Field4' => 57,
         ];
         DB::table('people')->insert($param);
 
         $param = [
           'name' => 'kei',
           'mail' => 'kei@kei.jp',
-          'age' => 60,
+          'Field4' => 60,
         ];
         DB::table('people')->insert($param);
     }

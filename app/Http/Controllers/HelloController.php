@@ -13,7 +13,7 @@ class HelloController extends Controller
 {
       public function index(Request $request)
       {
-        $items = DB::table('people')->orderBy('Field4', 'desc')->get();
+        $items = DB::table('people')->orderBy('Field4', 'asc')->get();
         return view('hello.index',['items' => $items]);
       }
 
